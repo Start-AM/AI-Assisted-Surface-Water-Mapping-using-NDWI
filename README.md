@@ -45,6 +45,48 @@ The workflow leverages remote sensing data (Sentinel-2 / Landsat) and applies ND
 
 ---
 
+🔷 1. What is NDWI?
+
+NDWI is a spectral index used to highlight water features in satellite images.
+
+𝑁𝐷𝑊𝐼 = (𝐺𝑟𝑒𝑒𝑛−𝑁𝐼𝑅)/(𝐺𝑟𝑒𝑒𝑛+𝑁𝐼𝑅)
+​
+Green band → reflects water strongly
+NIR (Near Infrared) → water absorbs it
+Result:
+Values > 0 → Water
+Values < 0 → Land/Vegetation
+🔷 2. End-to-End Workflow (Industry-Grade Approach)
+📌 Step 1: Data Acquisition
+Satellite sources:
+Sentinel-2 (ESA)
+Landsat 8/9 (USGS)
+Required bands:
+Green (B3)
+NIR (B8)
+📌 Step 2: Preprocessing
+Atmospheric correction
+Cloud masking
+Clipping to Area of Interest (AOI)
+(e.g., Yamuna Basin, Delhi)
+📌 Step 3: NDWI Calculation
+Use:
+QGIS Raster Calculator
+Python (Google Earth Engine / Rasterio)
+
+Formula applied pixel-wise → NDWI raster generated
+
+📌 Step 4: Thresholding (Traditional Method)
+Apply threshold (e.g., NDWI > 0)
+Output:
+Binary water mask
+
+⚠️ Limitation:
+
+Misclassification (shadows, built-up areas)
+
+---
+
 ## 📌 Output
 
 * NDWI Raster Map
